@@ -49,6 +49,9 @@ def coz():
             'format': 'best[ext=mp4]/best',
             'outtmpl': filepath,
             'quiet': True,
+            'nocheckcertificate': True, # Sertifika hatalarını yok say
+            # Kendimizi Chrome tarayıcısı gibi tanıtıyoruz:
+            'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         }
         
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -72,4 +75,5 @@ def serve_file(filename):
     return send_from_directory(DOWNLOAD_FOLDER, filename)
 
 if __name__ == '__main__':
+
     app.run(host='0.0.0.0', port=5000, debug=True)
